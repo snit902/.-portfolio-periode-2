@@ -164,5 +164,18 @@ button
     width: 45%;
     border-radius: 10px;   /* optioneel mooiere hoeken */
 }
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+#darkmode-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
 
 
