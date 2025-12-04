@@ -1,4 +1,6 @@
 // Cookie melding
+
+console.log("JavaScript werkt ook in een extern bestand!");
 const cookieBanner = document.getElementById("cookie-banner");
 
 if (cookieBanner) {
@@ -17,5 +19,6 @@ if (darkModeBtn) {
     console.log("Dark mode toggled.");
   });
 }
+
 
 
