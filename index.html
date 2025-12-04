@@ -10,96 +10,6 @@
 </head>
     
 <body>
-    <!-- Cookie-melding: plak dit vlak voor </body> -->
-<div id="cookie-banner" aria-live="polite" role="dialog" aria-label="Cookie melding" style="position:fixed;left:0;right:0;bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:#111;color:#fff;border-radius:10px;max-width:920px;margin:0 auto;box-shadow:0 6px 24px rgba(0,0,0,.25);transform:translateY(0);transition:transform .32s ease,opacity .32s ease;opacity:1;z-index:9999;">
-  <div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false" style="flex:0 0 auto;">
-      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.2" fill="none"></circle>
-      <path d="M8 12.5c0-1.9 2.1-3.5 4-3.5s4 1.6 4 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
-    </svg>
-    <div style="font-size:14px;line-height:1.35;min-width:0;">
-      <strong>We gebruiken cookies</strong>
-      <div style="opacity:.95;margin-top:4px;white-space:normal;overflow:hidden;text-overflow:ellipsis;">
-        Deze site gebruikt cookies om je ervaring te verbeteren. Door te accepteren ga je akkoord.
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex;gap:8px;flex-shrink:0;">
-    <button id="cookie-accept" type="button" style="padding:8px 14px;border-radius:8px;border:0;background:#0ea5a1;color:#fff;font-weight:600;cursor:pointer;">
-      Accepteer
-    </button>
-    <button id="cookie-close" type="button" aria-label="Sluit" title="Sluit" style="padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:transparent;color:#fff;cursor:pointer;">
-      ✕
-    </button>
-  </div>
-</div>
-
-<script>
-(function(){
-  const banner = document.getElementById('cookie-banner');
-  const acceptBtn = document.getElementById('cookie-accept');
-  const closeBtn = document.getElementById('cookie-close');
-  const STORAGE_KEY = 'cookie_melding_geaccepteerd';
-
-  // Verberg banner met nette overgang
-  function hideBanner() {
-    if (!banner) return;
-    banner.style.transform = 'translateY(18px)';
-    banner.style.opacity = '0';
-    banner.setAttribute('aria-hidden', 'true');
-    // verwijder uit DOM na overgang zodat tab focus niet meer op elementen kan komen
-    setTimeout(() => {
-      if (banner && banner.parentNode) banner.parentNode.removeChild(banner);
-    }, 320);
-  }
-
-  // Event handler: log en verberg
-  function onDismiss() {
-    try {
-      console.log('Cookie-melding weggeklikt.');
-    } catch (e) {
-      // noop als console niet beschikbaar
-    }
-    try {
-      localStorage.setItem(STORAGE_KEY, '1');
-    } catch (e) {
-      // localStorage kan geblokkeerd zijn; negeren
-    }
-    hideBanner();
-  }
-
-  // Controleer of al geaccepteerd
-  try {
-    if (localStorage.getItem(STORAGE_KEY) === '1') {
-      // verwijderd direct (geen render)
-      if (banner && banner.parentNode) banner.parentNode.removeChild(banner);
-      return;
-    }
-  } catch (e) {
-    // localStorage niet beschikbaar -> toon banner toch
-  }
-
-  // Voeg event listeners
-  if (acceptBtn) acceptBtn.addEventListener('click', onDismiss);
-  if (closeBtn) closeBtn.addEventListener('click', onDismiss);
-
-  // Sluit ook bij klikken buiten de tekst (optioneel)
-  banner.addEventListener('click', function(e){
-    // Als user klikt op de knoppen: de knop-handelaar doet zijn werk.
-    // Als user klikt op het banner-achtergrondgebied (niet op de knoppen), behandel dat ook als wegklikken.
-    const isButton = e.target.closest('button');
-    if (!isButton) {
-      onDismiss();
-    }
-  });
-
-  // Toegankelijkheid: focus naar Accepteer knop bij tonen
-  if (acceptBtn) {
-    acceptBtn.focus({preventScroll: true});
-  }
-})();
-</script>
 
     <header>
         <img src="profielfoto.png" class="profiele-img">
@@ -136,6 +46,7 @@
     
 </body>
 </html>
+
 
 
 
